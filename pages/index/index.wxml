@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="content">
+	<image class="background" src="../index/img/4.png" mode="aspectFill"></image>
+	<view class="main1">
+		<view class="bt1">一号轴承</view>
+		<image class="background-main1" src="../index/img/5.png"></image>
+		<view class="main1_left">
+    <view class="main_box">
+			<image class="main1_left_image1" src="../index/img/6.png"></image>
+			<image class="main1_left_image2" src="../index/img/7.png"></image>
+      </view>
+			<view class="list">
+				<view>
+					<text class="text_mu">6</text>
+					<text class="text_en">DE</text>
+				</view>
+				<view>
+					<text class="text_mu">2</text>
+					<text class="text_en">FE</text>
+				</view>
+				<view>
+					<text class="text_mu">-3</text>
+					<text class="text_en">BE</text>
+				</view>
+			</view>
+		</view>
+    <view class="main1_right">
+    
+    </view>
+	</view>
+<!--  -->
+		<view class="main1 main2">
+		<view class="bt1 bt2">二号轴承</view>
+		<image class="background-main1" src="../index/img/5.png"></image>
+		<view class="main1_left">
+    <view class="main_box">
+    <view class="main2_box">
+		<view class="main2_top"></view>
+    <view class="main2_center">inner race</view>
+    <view class="main2_top"></view>
+    </view>
+    </view>
+			<view class="list">
+			</view>
+		</view>
+    <view class="main1_right">
+    </view>
+	</view>
+<!--  -->
+  	<view class="main1">
+		<view class="bt1 bt3">三号轴承</view>
+		<image class="background-main1" src="../index/img/5.png"></image>
+		<view class="main1_left">
+    <view class="main_box">
+			<image class="main1_left_image1" src="../index/img/6.png"></image>
+			<image class="main1_left_image2" src="../index/img/7.png"></image>
+      </view>
+			<view class="list">
+			</view>
+		</view>
+    <view class="main1_right">
+    
+    </view>
+	</view>
+</view>
