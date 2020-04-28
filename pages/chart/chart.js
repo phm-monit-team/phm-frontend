@@ -1,15 +1,17 @@
 // pages/chart/index.js
+const app = getApp()
 import * as echarts from '../../ec-canvas/echarts'
-let chart = null
+
 function initChart(canvas, width, height, dpr) {
-  chart = echarts.init(canvas, null, {
+  let chart = echarts.init(canvas, null, {
     width: width,
     height: height,
     devicePixelRatio: dpr, // 像素
   })
   canvas.setChart(chart)
 
-  var option = {
+  let option = {
+    animationEasingUpdate: 'circularOut',
     tooltip: {
       show: false,
       trigger: 'axis',
@@ -41,7 +43,7 @@ function initChart(canvas, width, height, dpr) {
           shadowColor: 'rgba(82, 242, 248, 1)',
           fontSize: 10,
         },
-        data: ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
+        data: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
       },
     ],
     yAxis: [
@@ -88,7 +90,7 @@ function initChart(canvas, width, height, dpr) {
       {
         type: 'line',
         name: 'be',
-        data: [1, 2, 5, 3, 2, 1, 3, 1, 4],
+        // data: [1, 2, 5, 3, 2, 1, 3, 1, 4],
         // dimensions: ['value'],
         showSymbol: false,
         lineStyle: {
@@ -124,19 +126,47 @@ function initChart(canvas, width, height, dpr) {
   chart.setOption(option)
   return chart
 }
+let chart = {
+  DE_time: null,
+  FE_time: null,
+  BA_time: null
+}
+const de_init = (...opt) => chart.DE_time = initChart(...opt)
+const fe_init = (...opt) => chart.FE_time = initChart(...opt)
+const ba_init = (...opt) => chart.BA_time = initChart(...opt)
 
 Page({
   data: {
-    ec: {
-      onInit: initChart,
+    ec_de: {
+      onInit: de_init,
+    },
+    ec_fe: {
+      onInit: fe_init,
+    },
+    ec_ba: {
+      onInit: ba_init,
     },
     msg: 'ok',
   },
-  onLoad: function (options) {},
-  onReady() {
-    setTimeout(function () {
-      // 获取 chart 实例的方式
-      console.log(chart)
-    }, 2000)
+  onLoad: function (options) {
+    const device_id = "147-3"
+    wx.onSocketMessage(() => {
+      const dataset = app.globalData.dataset[device_id]
+      const currentSet = dataset ? dataset.slice(-20) : []
+      for (let chartName in chart) {
+        chart[chartName].setOption({
+          xAxis: [{
+            data: currentSet.map(i => {
+              const date = new Date()
+              date.setTime(Date.parse(i.time))
+              return date.toLocaleTimeString().slice(2)
+            })
+          }],
+          series: [{
+            data: currentSet.map(i => i[chartName])
+          }]
+        })
+      }
+    })
   },
 })

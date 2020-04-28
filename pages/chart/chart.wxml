@@ -5,14 +5,21 @@
     <image class="background" src="../index/img/5.png"></image>
     <view class="title">DE_TIME</view>
     <view class="graph">
-      <ec-canvas class="canvas" canvas-id="chart-de" ec="{{ ec }}"></ec-canvas>
+      <ec-canvas class="canvas" canvas-id="chart-de" ec="{{ ec_de }}"></ec-canvas>
     </view>
   </view>
   <view class="chart">
     <image class="background" src="../index/img/5.png"></image>
-    <view class="title">DE_TIME</view>
+    <view class="title">FE_TIME</view>
     <view class="graph">
-      <ec-canvas class="canvas" canvas-id="chart-de" ec="{{ ec }}"></ec-canvas>
+      <ec-canvas class="canvas" canvas-id="chart-fe" ec="{{ ec_fe }}"></ec-canvas>
+    </view>
+  </view>
+  <view class="chart">
+    <image class="background" src="../index/img/5.png"></image>
+    <view class="title">BA_TIME</view>
+    <view class="graph">
+      <ec-canvas class="canvas" canvas-id="chart-ba" ec="{{ ec_ba }}"></ec-canvas>
     </view>
   </view>
 </view>
