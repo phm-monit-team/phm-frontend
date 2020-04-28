@@ -1,14 +1,14 @@
 <!-- index.wxml -->
 <view class="content">
   <image class="background" src="../index/img/4.png" animation="{{animation}}" mode="aspectFill"></image>
-  <view class="window">
-    <view class="bt1">104-3 号 轴承</view>
-    <image class="background-main1" src="../index/img/5.png"></image>
+  <view wx:for="{{devices}}" wx:key="device_id" class="window" data-id="{{item.device_id}}" bindtap="tap">
+    <view class="title {{item.error === 'normal' ? '' : 'error'}}">{{item.device_id}} 号 轴承</view>
+    <image class="background-main1" src="{{item.error === 'normal' ? 'http://img.meansky.cn/5.png' : 'http://img.meansky.cn/8.png'}}"></image>
     <view class="main-wrap">
       <view class="main1_left">
-        <view class="alert disable">
+        <view class="alert {{item.error === 'normal' ? 'disable' : ''}}">
           <view class="top"></view>
-          <view class="center">inner race</view>
+          <view class="center">{{item.error}}</view>
           <view class="bottom"></view>
         </view>
         <view class="sping">
@@ -17,8 +17,20 @@
         </view>
       </view>
       <view class="main1_right">
-        <view class="msb"></view>
-        <button class="btn">关机</button>
+        <!-- <view class="msb"></view> -->
+        <view class="panel-wrap">
+          <view class="panel panel-de">
+            <ec-canvas class="canvas" canvas-id="chart-de" ec="{{ item.ec_de }}"></ec-canvas>
+          </view>
+          <view class="panel panel-fe">
+            <ec-canvas class="canvas" canvas-id="chart-fe" ec="{{ item.ec_fe }}"></ec-canvas>
+          </view>
+        </view>
+        <view class="label-wrap">
+            <view class="label">DE_TIME</view>
+            <view class="label">FE_TIME</view>
+        </view>
+        <!-- <button class="btn">关机</button> -->
       </view>
     </view>
   </view>

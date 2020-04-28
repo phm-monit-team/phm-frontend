@@ -9,7 +9,7 @@ App({
     })
     socketTask.onMessage(({ data }) => {
       data = JSON.parse(data)
-      console.log(data)
+      // console.log(data)
       const { dataset, errorLog } = this.globalData
       if (data.dataPoint) {
         const { device_id } = data.dataPoint
@@ -20,9 +20,8 @@ App({
         }
       } else if (data.errorLog) {
         const { device_id } = data.errorLog
-        dataset[device_id] = dataset[device_id] || []
+        errorLog[device_id] = errorLog[device_id] || []
         errorLog[device_id].push(data.errorLog)
-        console.log(this.globalData.errorLog)
       }
     })
   },

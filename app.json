@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/chart/chart",
     "pages/index/index",
+    "pages/chart/chart",
     "pages/logs/logs"
   ],
   "window":{

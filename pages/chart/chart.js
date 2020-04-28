@@ -149,7 +149,7 @@ Page({
     msg: 'ok',
   },
   onLoad: function (options) {
-    const device_id = "147-3"
+    const device_id = options.device
     wx.onSocketMessage(() => {
       const dataset = app.globalData.dataset[device_id]
       const currentSet = dataset ? dataset.slice(-20) : []

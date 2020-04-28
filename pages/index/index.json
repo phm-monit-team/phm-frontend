@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  },
+  "navigationBarBackgroundColor": "#06173c",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "实时监控"
 }
