@@ -345,22 +345,6 @@ Page({
         }
       }
     })
-    // setTimeout(() => {
-    //   this.setData({
-    //     devices: [...this.data.devices, {
-    //       device_id: "2",
-    //       namespace: "dv2",
-    //       error: "ball",
-    //       ec_de: {
-    //         onInit: init("2_de")
-    //       },
-    //       ec_fe: {
-    //         onInit: init("2_fe")
-    //       },
-    //     }]
-    //   })
-    //   console.log(chart)
-    // }, 2000)
   },
   tap: (e) => {
     const id = e.currentTarget.dataset.id

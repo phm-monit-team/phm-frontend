@@ -154,7 +154,7 @@ Page({
       const dataset = app.globalData.dataset[device_id]
       const currentSet = dataset ? dataset.slice(-20) : []
       for (let chartName in chart) {
-        chart[chartName].setOption({
+        chart[chartName] && chart[chartName].setOption({
           xAxis: [{
             data: currentSet.map(i => {
               const date = new Date()
