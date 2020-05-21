@@ -1,45 +1,45 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="content">
-  <image class="background" src="../index/img/4.png" animation="{{animation}}"  mode="aspectFill"></image>
-  <view class="main1">
-    <view class="bt1">一号轴承</view>
-    <image class="background-main1" src="../index/img/5.png"></image>
-    <view class="main1_left">
-      <view class="main_box">
-        <image class="main1_left_image1" src="../index/img/6.png"></image>
-        <image class="main1_left_image2" src="../index/img/7.png"></image>
-      </view>
-      <view class="list">
-        <view>
-          <text class="text_mu">6</text>
-          <text class="text_en">DE</text>
+  <image class="background" src="../index/img/4.png" animation="{{animation}}" mode="aspectFill"></image>
+  <view wx:for="{{devices}}" wx:key="device_id" class="window" data-id="{{item.device_id}}" bindtap="tap">
+    <view class="title {{item.error === 'normal' ? '' : 'error'}}">{{item.device_id}} 号 轴承</view>
+    <image class="background-main1" src="{{item.error === 'normal' ? 'http://img.meansky.cn/5.png' : 'http://img.meansky.cn/8.png'}}"></image>
+    <view class="main-wrap">
+      <view class="main1_left">
+        <view class="alert {{item.error === 'normal' ? 'disable' : ''}}">
+          <view class="top"></view>
+          <view class="center">{{item.error}}</view>
+          <view class="bottom"></view>
         </view>
-        <view>
-          <text class="text_mu">2</text>
-          <text class="text_en">FE</text>
-        </view>
-        <view>
-          <text class="text_mu">-3</text>
-          <text class="text_en">BE</text>
+        <view class="sping">
+          <image class="main1_left_image1" src="../index/img/6.png"></image>
+          <image class="main1_left_image2" src="../index/img/7.png"></image>
         </view>
       </view>
-    </view>
-    <view class="main1_right">
-      <view class="msb"></view>
-      <button class="btn">关机</button>
+      <view class="main1_right">
+        <!-- <view class="msb"></view> -->
+        <view class="panel-wrap">
+          <view class="panel panel-de">
+            <ec-canvas class="canvas" canvas-id="chart-de" ec="{{ item.ec_de }}"></ec-canvas>
+          </view>
+          <view class="panel panel-fe">
+            <ec-canvas class="canvas" canvas-id="chart-fe" ec="{{ item.ec_fe }}"></ec-canvas>
+          </view>
+        </view>
+        <view class="label-wrap">
+            <view class="label">DE_TIME</view>
+            <view class="label">FE_TIME</view>
+        </view>
+        <!-- <button class="btn">关机</button> -->
+      </view>
     </view>
   </view>
   <!--  -->
-  <view class="main1 main2">
+  <!-- <view class="main1 main2">
     <view class="bt1 bt2">二号轴承</view>
     <image class="background-main1" src="../index/img/8.png"></image>
     <view class="main1_left">
       <view class="main_box">
-        <view class="main2_box">
-          <view class="main2_top"></view>
-          <view class="main2_center">inner race</view>
-          <view class="main2_bottom"></view>
-        </view>
       </view>
       <view class="list">
         <view>
@@ -60,9 +60,9 @@
       <view class="msb"></view>
       <button class="btn btn2">关机</button>
     </view>
-  </view>
+  </view> -->
   <!--  -->
-  <view class="main1">
+  <!-- <view class="main1">
     <view class="bt1 bt3">三号轴承</view>
     <image class="background-main1" src="../index/img/9.png"></image>
     <view class="main1_left">
@@ -89,5 +89,5 @@
       <view class="msb"></view>
       <button class="btn">开机</button>
     </view>
-  </view>
+  </view> -->
 </view>
